@@ -16,11 +16,14 @@ WORKDIR /app
 COPY requirements_hf.txt .
 RUN pip install --no-cache-dir -r requirements_hf.txt
 
+# Install audiblez from PyPI
+RUN pip install --no-cache-dir audiblez
+
 # Download spacy model at build time
 RUN python -c "import spacy; spacy.cli.download('xx_ent_wiki_sm')"
 
 # Copy application code
-COPY . .
+COPY app.py .
 
 # Expose Gradio port
 EXPOSE 7860
