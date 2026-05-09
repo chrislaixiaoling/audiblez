@@ -183,7 +183,9 @@ def get_book_info(epub_file):
 
 
 # Gradio UI
-with gr.Blocks(title="Audiblez - Epub转有声书", theme=gr.themes.Soft()) as demo:
+demo = gr.Blocks(title="Audiblez - Epub转有声书")
+
+with demo:
     gr.Markdown("# 🎧 Audiblez - Epub转有声书")
     gr.Markdown("基于 Kokoro-82M TTS 模型，将 epub 电子书转换为 m4b 有声书")
 
@@ -192,7 +194,7 @@ with gr.Blocks(title="Audiblez - Epub转有声书", theme=gr.themes.Soft()) as d
             epub_input = gr.File(
                 label="上传 Epub 文件",
                 file_types=[".epub"],
-                file_count=1
+                file_count="single"
             )
 
             book_info = gr.Markdown("---")
@@ -246,4 +248,4 @@ with gr.Blocks(title="Audiblez - Epub转有声书", theme=gr.themes.Soft()) as d
     """)
 
 if __name__ == "__main__":
-    demo.launch(server_name="0.0.0.0", server_port=7860)
+    demo.launch(server_name="0.0.0.0", server_port=7860, theme="soft")
