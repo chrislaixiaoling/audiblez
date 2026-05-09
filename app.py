@@ -19,7 +19,6 @@ from audiblez.core import (
     find_cover,
     gen_audio_segments,
     load_spacy,
-    split_long_sentence,
 )
 
 sample_rate = 24000
